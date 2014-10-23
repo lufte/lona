@@ -1,0 +1,32 @@
+{
+    "name": "Lona",
+    "description": "Un juego de serpiente con un giro.",
+    "launch_path": "/index.html",
+    "version": "1.0",
+    "icons": {
+        "128": "/icon.png"
+    },
+    "developer": {
+        "name": "Javier Ayres",
+        "url": "https://github.com/lufte"
+    },
+    "locales": {
+        "es": {
+            "description": "Un juego de serpiente con un giro.",
+            "developer": {
+                "name": "Javier Ayres",
+                "url": "https://github.com/lufte"
+            }
+        },
+        "en": {
+            "description": "A snake game with a twist.",
+            "developer": {
+                "name": "Javier Ayres",
+                "url": "https://github.com/lufte"
+            }
+        }
+    },
+    "default_locale": "es",
+    "fullscreen": "true",
+    "orientation": "portrait"
+}
