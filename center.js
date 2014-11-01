@@ -102,6 +102,10 @@ function Center(x, y, direction, startRot, endRot) {
     }
     
     this.grow = function() {
-        this.growth = DISTANCE;
+        if (this.growth <= 0) {
+            this.growth = DISTANCE;
+        } else {
+            this.growth += DISTANCE;
+        }
     }
 }
