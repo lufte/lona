@@ -173,19 +173,17 @@ function loop() {
 }
 
 function tap(event) {
-    if (!isPaused) {
-        if (event.target.id != 'pause' && event.target.id != 'about') {
-            var last = centers[centers.length - 1];
-            centers.push(
-                new Center(
-                    last.x + Math.cos(last.direction > 0 ? last.endRot : last.startRot) * 2 * RADIUS,
-                    last.y + Math.sin(last.direction > 0 ? last.endRot : last.startRot) * 2 * RADIUS,
-                    -last.direction,
-                    (Math.PI + (last.direction > 0 ? last.endRot : last.startRot)),
-                    (Math.PI + (last.direction > 0 ? last.endRot : last.startRot))
-                )
-            );
-        }
+    if (!isPaused && event.target.id != 'pause' && event.target.id != 'about' && event.target.id != 'restart') {
+        var last = centers[centers.length - 1];
+        centers.push(
+            new Center(
+                last.x + Math.cos(last.direction > 0 ? last.endRot : last.startRot) * 2 * RADIUS,
+                last.y + Math.sin(last.direction > 0 ? last.endRot : last.startRot) * 2 * RADIUS,
+                -last.direction,
+                (Math.PI + (last.direction > 0 ? last.endRot : last.startRot)),
+                (Math.PI + (last.direction > 0 ? last.endRot : last.startRot))
+            )
+        );
     }
 }
 
@@ -202,7 +200,6 @@ function pause() {
     } else {
         isPaused = true;
         pauseSpan.setAttribute('class', 'icon-play');
-        //⟳
     }
 }
 
