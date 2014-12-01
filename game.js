@@ -136,10 +136,13 @@ function loop() {
             }
         }
         item.draw();
-        for (var i = 0; i < centers.length && rotDiff > 0; i++) {
+        var i = 0;
+        while (i < centers.length && rotDiff > 0) {
             rotDiff = centers[i].moveEnd(rotDiff);
             if (centers[i].mustShift()) {
                 centers.shift();
+            } else {
+                i++;
             }
         }
         var collision = false;
