@@ -47,6 +47,7 @@ function initScreen() {
         document.body.addEventListener('touchstart', tap, false);
     } else {
         document.body.addEventListener('mousedown', tap, false);
+        document.body.addEventListener('keydown', tap, false);
     }
     
     //Get support of requestAnimationFrame
