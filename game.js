@@ -46,7 +46,8 @@ function initScreen() {
     if (!!('ontouchstart' in window)) {
         document.body.addEventListener('touchstart', tap, false);
     } else {
-        document.body.addEventListener('click', tap, false);
+        document.body.addEventListener('mousedown', tap, false);
+        document.body.addEventListener('keydown', tap, false);
     }
     
     //Get support of requestAnimationFrame
