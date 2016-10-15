@@ -228,6 +228,11 @@ function gameOver() {
     gameOverMessage.style.visibility = 'visible';
     gameOverContainer.style.opacity = 0.3;
     gameOverMessage.style.opacity = 1;
+    setTimeout(function () {
+        gameOverContainer.addEventListener('click', restart, false);
+        gameOverMessage.addEventListener('click', restart, false);
+    }, 1000);
+    
 }
 
 function restart() {
@@ -235,5 +240,7 @@ function restart() {
     gameOverMessage.style.visibility = 'hidden';
     gameOverContainer.style.opacity = 0;
     gameOverMessage.style.opacity = 0;
+    gameOverContainer.removeEventListener('click', restart);
+    gameOverMessage.removeEventListener('click', restart);
     go();
 }
