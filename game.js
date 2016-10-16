@@ -144,7 +144,7 @@ function loop() {
             centers[0].grow();
             score++;
             scoreSpan.innerHTML = score + '';
-            if (parseInt(max.innerHTML) < score) {
+            if (parseInt(max.innerHTML, 10) < score) {
                 max.innerHTML = scoreSpan.innerHTML;
             }
         }
