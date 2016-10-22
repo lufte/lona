@@ -191,6 +191,7 @@ function loop() {
 
 function tap(event) {
     if (!isPaused && event.target.id != 'pause' && event.target.id != 'about' && event.target.id != 'restart') {
+        event.preventDefault();
         var last = centers[centers.length - 1];
         centers.push(
             new Center(
