@@ -45,10 +45,10 @@ function initScreen() {
     //Get support for touch events
     if (!!('ontouchstart' in window)) {
         document.body.addEventListener('touchstart', tap, false);
-    } else {
-        document.body.addEventListener('mousedown', tap, false);
-        document.body.addEventListener('keydown', tap, false);
     }
+    // also enable click and keyboard on notebook with touchscreen
+    document.body.addEventListener('mousedown', tap, false);
+    document.body.addEventListener('keydown', tap, false);
     
     /**
      * Provides requestAnimationFrame in a cross browser way.
@@ -83,7 +83,7 @@ function initScreen() {
     LINEAR_WIDTH = Math.round(SCREEN_WIDTH / 13.3);
     CIRCULAR_WIDTH = LINEAR_WIDTH / (RADIUS * 2);
     
-    //Set canvas size
+    //Set canvas size	
     container.style.width = SCREEN_WIDTH + 'px';
     container.style.height = SCREEN_HEIGHT + 'px';
     canvas.width = SCREEN_WIDTH;
