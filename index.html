@@ -30,6 +30,11 @@
         </style>
         <link href="style.css" rel="stylesheet">
         <script src="l10n.js"></script>
+        <script>
+            function hashLink(path) {
+                location = path + location.hash;
+            }
+        </script>
         <link rel="prefetch" type="application/l10n" href="locales.ini">
     </head>
     <body>
@@ -47,6 +52,6 @@
             </tbody>
         </table>
         <p data-l10n-id="tutorial4"></p>
-        <p><a data-l10n-id="play" id="start" href="game.html"></a><p>
+        <p><a data-l10n-id="play" id="start" href="#" onclick="hashLink('game.html');"></a><p>
     </body>
 </html>

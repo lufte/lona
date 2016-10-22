@@ -180,6 +180,7 @@ function loop() {
             gameOver();
             if (score > localStorage.getItem(MAX_SCORE_KEY)) {
                 localStorage.setItem(MAX_SCORE_KEY, score);
+                setTelegramHighScore(score);
             }
         } else {
             requestAnimationFrame(loop);
@@ -243,4 +244,16 @@ function restart() {
     gameOverContainer.removeEventListener('click', restart);
     gameOverMessage.removeEventListener('click', restart);
     go();
+}
+
+/**
+ * Check if this game was initiated from a Telegram chat and set the highscore.
+ */
+function setTelegramHighScore(score) {
+    if (location.hash.indexOf('user_id') > -1 && location.hash.indexOf('inline_message_id') > -1) {
+        var req = new XMLHttpRequest();
+        req.open('POST', 'https://lonagamebot-b0.rhcloud.com/sethighscore');
+        req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        req.send(location.hash.substring(1).split('#')[0] + '&highscore=' + score);
+    }
 }
