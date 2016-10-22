@@ -83,7 +83,7 @@ function initScreen() {
     LINEAR_WIDTH = Math.round(SCREEN_WIDTH / 13.3);
     CIRCULAR_WIDTH = LINEAR_WIDTH / (RADIUS * 2);
     
-    //Set canvas size	
+    //Set canvas size
     container.style.width = SCREEN_WIDTH + 'px';
     container.style.height = SCREEN_HEIGHT + 'px';
     canvas.width = SCREEN_WIDTH;
