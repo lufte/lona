@@ -178,9 +178,9 @@ function loop() {
         }
         if (collision || offBorders) {
             gameOver();
+            setTelegramHighScore(score);
             if (score > localStorage.getItem(MAX_SCORE_KEY)) {
                 localStorage.setItem(MAX_SCORE_KEY, score);
-                setTelegramHighScore(score);
             }
         } else {
             requestAnimationFrame(loop);
