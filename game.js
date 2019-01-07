@@ -44,11 +44,12 @@ function initScreen() {
 
     //Get support for touch events
     if (!!('ontouchstart' in window)) {
-        document.body.addEventListener('touchstart', tap, false);
+        document.body.addEventListener('touchstart', tap, {passive: false},
+                                       false);
     }
     // also enable click and keyboard on notebook with touchscreen
-    document.body.addEventListener('mousedown', tap, false);
-    document.body.addEventListener('keydown', tap, false);
+    document.body.addEventListener('mousedown', tap, {passive: false},  false);
+    document.body.addEventListener('keydown', tap, {passive: false},  false);
 
     /**
      * Provides requestAnimationFrame in a cross browser way.
