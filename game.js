@@ -1,18 +1,18 @@
 /*
  * Copyright (c) 2013, Javier Ayres
- * 
+ *
  * This file is part of Lona.
- * 
- * Lona is free software: you can redistribute it and/or 
+ *
+ * Lona is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * Lona is distributed in the hope that it will
- * be useful, but WITHOUT ANY WARRANTY; without even the implied warranty 
+ * be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
  * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along with
  * Lona. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -41,7 +41,7 @@ function initScreen() {
     maxSpan = document.getElementById('max');
     gameOverContainer = document.getElementById('game-over-container');
     gameOverMessage = document.getElementById('game-over');
-    
+
     //Get support for touch events
     if (!!('ontouchstart' in window)) {
         document.body.addEventListener('touchstart', tap, false);
@@ -49,7 +49,7 @@ function initScreen() {
     // also enable click and keyboard on notebook with touchscreen
     document.body.addEventListener('mousedown', tap, false);
     document.body.addEventListener('keydown', tap, false);
-    
+
     /**
      * Provides requestAnimationFrame in a cross browser way.
      * @author paulirish / http://paulirish.com/
@@ -66,7 +66,7 @@ function initScreen() {
             };
         } )();
     }
-    
+
     //Get window size
     if (window.innerWidth / window.innerHeight > 2 / 3) {
         SCREEN_HEIGHT = window.innerHeight;
@@ -82,7 +82,7 @@ function initScreen() {
     RADIUS = Math.round(SCREEN_WIDTH / 12.8);
     LINEAR_WIDTH = Math.round(SCREEN_WIDTH / 13.3);
     CIRCULAR_WIDTH = LINEAR_WIDTH / (RADIUS * 2);
-    
+
     //Set canvas size
     container.style.width = SCREEN_WIDTH + 'px';
     container.style.height = SCREEN_HEIGHT + 'px';
@@ -96,17 +96,17 @@ function initScreen() {
     ellipse.setAttribute('ry', SCREEN_HEIGHT / 2 - BORDER_WIDTH);
     ellipse.setAttribute('stroke-width', BORDER_WIDTH * 2);
     document.body.style.fontSize = Math.round(SCREEN_WIDTH / 8) + 'px';
-    
+
     //Shrink SCREEN_WIDTH and SCREEN_HEIGHT to take the ellipse's border into account
     SCREEN_WIDTH -= BORDER_WIDTH * 4;
     SCREEN_HEIGHT -= BORDER_WIDTH * 4;
-    
+
     //Set ellipse's centers
     FOCI_X = Math.round(SCREEN_WIDTH / 2) + BORDER_WIDTH * 2;
     //f² = a² - b²
     FOCUS_1_Y = SCREEN_HEIGHT / 2 - Math.sqrt(Math.pow((SCREEN_HEIGHT - LINEAR_WIDTH) / 2, 2) - Math.pow((SCREEN_WIDTH - LINEAR_WIDTH) / 2, 2)) + BORDER_WIDTH * 2;
     FOCUS_2_Y = SCREEN_HEIGHT / 2 + Math.sqrt(Math.pow((SCREEN_HEIGHT - LINEAR_WIDTH) / 2, 2) - Math.pow((SCREEN_WIDTH - LINEAR_WIDTH) / 2, 2)) + BORDER_WIDTH * 2;
-    
+
     isPaused = false;
     if(typeof(Storage) !== "undefined") {
         max.innerHTML = localStorage.getItem(MAX_SCORE_KEY);
@@ -114,13 +114,13 @@ function initScreen() {
             max.innerHTML = '0';
         }
     }
-    
+
     ctx = canvas.getContext('2d');
     ctx.lineWidth = LINEAR_WIDTH;
     ctx.strokeStyle = '#FFDB21';
     ctx.fillStyle = '#FFDB21';
     ctx.lineCap = 'round';
-    
+
     go();
 }
 
@@ -234,7 +234,7 @@ function gameOver() {
         gameOverContainer.addEventListener('click', restart, false);
         gameOverMessage.addEventListener('click', restart, false);
     }, 1000);
-    
+
 }
 
 function restart() {
