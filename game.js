@@ -29,7 +29,8 @@ var MAX_SCORE_KEY = 'hs';
 //Global snake variables
 var centers, item, rotDiff, now, lastRepaint, score, isPaused;
 //Global screen variables
-var container, canvas, svg, ellipse, ctx, scoreSpan, pauseSpan, maxSpan, gameOverContainer, gameOverMessage;
+var container, canvas, svg, ellipse, ctx, scoreSpan, pauseButton, playButton,
+    maxSpan, gameOverContainer, gameOverMessage, fontSize;
 
 function initScreen() {
     container = document.getElementById('container');
@@ -37,7 +38,8 @@ function initScreen() {
     svg = document.getElementById('s');
     ellipse = document.getElementById('e');
     scoreSpan = document.getElementById('score');
-    pauseSpan = document.getElementById('pause');
+    pauseButton = document.getElementById('pause');
+    playButton = document.getElementById('play');
     maxSpan = document.getElementById('max');
     gameOverContainer = document.getElementById('game-over-container');
     gameOverMessage = document.getElementById('game-over');
@@ -96,8 +98,12 @@ function initScreen() {
     ellipse.setAttribute('rx', SCREEN_WIDTH / 2 - BORDER_WIDTH);
     ellipse.setAttribute('ry', SCREEN_HEIGHT / 2 - BORDER_WIDTH);
     ellipse.setAttribute('stroke-width', BORDER_WIDTH * 2);
-    document.body.style.fontSize = Math.round(SCREEN_WIDTH / 8) + 'px';
-
+    fontSize = Math.round(SCREEN_WIDTH / 8) + 'px';
+    document.body.style.fontSize = fontSize;
+    var icons = document.querySelectorAll('svg.icon');
+    for (var i = 0; i < icons.length; i++) {
+      icons[i].style.height = fontSize;
+    }
     //Shrink SCREEN_WIDTH and SCREEN_HEIGHT to take the ellipse's border into account
     SCREEN_WIDTH -= BORDER_WIDTH * 4;
     SCREEN_HEIGHT -= BORDER_WIDTH * 4;
@@ -191,7 +197,13 @@ function loop() {
 }
 
 function tap(event) {
-    if (!isPaused && event.target.id != 'pause' && event.target.id != 'about' && event.target.id != 'restart') {
+    if (
+            !isPaused &&
+            event.target.id != 'pause' &&
+            event.target.id != 'play' &&
+            event.target.id != 'about' &&
+            event.target.id != 'restart'
+    ) {
         event.preventDefault();
         var last = centers[centers.length - 1];
         centers.push(
@@ -214,11 +226,13 @@ function pause() {
     if (isPaused) {
         isPaused = false;
         lastRepaint = new Date().getTime();
-        pauseSpan.setAttribute('class', 'icon-pause');
+        pauseButton.style.display = 'inherit';
+        playButton.style.display = 'none';
         loop();
     } else {
         isPaused = true;
-        pauseSpan.setAttribute('class', 'icon-play');
+        pauseButton.style.display = 'none';
+        playButton.style.display = 'inherit';
     }
 }
 

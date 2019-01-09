@@ -14,40 +14,6 @@
                 font-weight: normal;
                 font-style: normal;
             }
-            @font-face {
-                font-family: 'icomoon';
-                src:url('fonts/icomoon.eot?-xgub21');
-                src:url('fonts/icomoon.eot?#iefix-xgub21') format('embedded-opentype'),
-                    url('fonts/icomoon.woff?-xgub21') format('woff'),
-                    url('fonts/icomoon.ttf?-xgub21') format('truetype'),
-                    url('fonts/icomoon.svg?-xgub21#icomoon') format('svg');
-                font-weight: normal;
-                font-style: normal;
-            }
-
-            [class^="icon-"], [class*=" icon-"] {
-                font-family: 'icomoon';
-                speak: none;
-                font-style: normal;
-                font-weight: normal;
-                font-variant: normal;
-                text-transform: none;
-                line-height: 1;
-
-                /* Better Font Rendering =========== */
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-            .icon-play:before {
-                content: "\e600";
-            }
-            .icon-pause:before {
-                content: "\e601";
-            }
-            .icon-loop:before {
-                content: "\e602";
-            }
-
             body {
                 font-family: "Ruji's Handwriting Font v.2.0";
                 margin: 0;
@@ -58,7 +24,7 @@
                 position: relative;
                 margin: auto;
             }
-            #s, #c, span, #game-over-container, #game-over {
+            #s, #c, span, #game-over-container, #game-over, #play, #pause {
                 position: absolute;
             }
             #s {
@@ -80,12 +46,15 @@
             #about {
                 top: 0;
                 left: 2px;
-                cursor: pointer;
             }
-            #pause {
-                top: 5px;
+            #pause, #play {
+                top: 1%;
                 right: 2px;
-                font-family: icomoon;
+            }
+            #play {
+                display: none;
+            }
+            .icon {
                 cursor: pointer;
             }
             #game-over-container, #game-over {
@@ -111,7 +80,7 @@
                 margin: 0;
                 padding: 0;
             }
-            
+
         </style>
     </head>
     <body onload="initScreen();">
@@ -123,15 +92,42 @@
             </svg>
             <span id="score">0</span>
             <span id="max"></span>
-            <span id="about" onclick="showAbout();">¿?</span>
-            <span id="pause" class="icon-pause" onclick="pause();"></span>
+            <span id="about" class="icon" onclick="showAbout();">¿?</span>
+            <svg id="play" class="icon" onclick="pause();"
+                 viewBox="-100 -100 1200 1200">
+              <path fill="#886727" d="M512 960c-282.77
+              0-512-229.23-512-512s229.23-512 512-512 512 229.23 512
+              512-229.23 512-512 512zM512 32c-229.75 0-416 186.25-416
+              416s186.25 416 416 416 416-186.25
+              416-416-186.25-416-416-416zM384 672l384-224-384-224z"></path>
+            </svg>
+            <svg id="pause" class="icon" onclick="pause();"
+                 viewBox="-100 -100 1200 1200">
+              <path fill="#886727" d="M512 960c-282.77
+              0-512-229.23-512-512s229.23-512 512-512 512 229.23 512
+              512-229.23 512-512 512zM512 32c-229.75 0-416 186.25-416
+              416s186.25 416 416 416 416-186.25
+              416-416-186.25-416-416-416zM320 640h128v-384h-128zM576
+              640h128v-384h-128z"></path>
+            </svg>
         </div>
         <div id="game-over-container">
         </div>
         <div id="game-over">
             <p data-l10n-id="gameover1"></p>
             <p data-l10n-id="gameover2"></p>
-            <p class="icon-loop" id="restart"></p>
+            <svg id="restart" class="icon" viewBox="-100 -100 1200 1200">
+              <path fill="#490000" d="M874.022 810.020c-92.652 92.656-220.636
+              149.98-362.022 149.98-219.488
+              0-406.69-138.128-479.498-332.188l119.876-44.954c54.604 145.546
+              195.006 249.142 359.622 249.142 106.040 0
+              202.020-43
+              271.506-112.494l-143.506-143.506h384v384l-149.978-149.98zM512
+              64c-106.040 0-202.026 42.992-271.512 112.488l143.512
+              143.512h-384v-384l149.994 149.994c92.646-92.662 220.618-149.994
+              362.006-149.994 219.49 0 406.692 138.128 479.5 332.188l-119.876
+              44.954c-54.604-145.546-195.006-249.142-359.624-249.142z"></path>
+            </svg>
         </div>
     </body>
 </html>
