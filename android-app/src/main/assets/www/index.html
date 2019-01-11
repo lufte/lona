@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <meta charset="UTF-8">
+        <style>
+            table {
+                width: 100vw;
+                max-width: 420px;
+                margin: auto;
+            }
+            td.text {
+                width: 33.3%;
+                padding: 0;
+            }
+            td.text, p {
+                text-align: center;
+            }
+            img {
+                width: 100%;
+            }
+            #start {
+                font-size: 1.8em;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 5px;
+                background-color: #886727;
+                color: #D2E4B0;
+            }
+        </style>
+        <link href="style.css" rel="stylesheet">
+        <script src="l10n.js"></script>
+        <script>
+            function hashLink(path) {
+                location = path + location.hash;
+            }
+        </script>
+        <link rel="prefetch" type="application/l10n" href="locales.ini">
+    </head>
+    <body>
+        <h1>Lona</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="3"><img src="tutorial.png"></td>
+                </tr>
+                <tr>
+                    <td data-l10n-id="tutorial1" class="text"></td>
+                    <td data-l10n-id="tutorial2" class="text"></td>
+                    <td data-l10n-id="tutorial3" class="text"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-l10n-id="tutorial4"></p>
+        <p><a data-l10n-id="play" id="start" href="#" onclick="hashLink('game.html');"></a><p>
+    </body>
+</html>

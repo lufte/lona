@@ -1,0 +1,21 @@
+@font-face {
+    font-family: "Ruji's Handwriting Font v.2.0"; src: url('fonts/RujisHandwritingFontv.2.0.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: "Ruji's Handwriting Font v.2.0";
+    margin: 0;
+    background-color: #D2E4B0;
+    color: #886727;
+    font-size: 1.3em;
+}
+h1 {
+    text-align: center;
+}
+p, h1 {
+    margin: 10px 0 10px 0;
+}
+a {
+    color: #886727;
+}

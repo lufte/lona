@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="game.js"></script>
+        <script src="center.js"></script>
+        <script src="item.js"></script>
+        <script src="l10n.js"></script>
+        <link rel="prefetch" type="application/l10n" href="locales.ini">
+        <style>
+            @font-face {
+                font-family: "Ruji's Handwriting Font v.2.0"; src: url('fonts/RujisHandwritingFontv.2.0.otf') format('opentype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            body {
+                font-family: "Ruji's Handwriting Font v.2.0";
+                margin: 0;
+                background-color: #D2E4B0;
+                color: #886727;
+            }
+            #container {
+                position: relative;
+                margin: auto;
+            }
+            #s, #c, span, #game-over-container, #game-over, #play, #pause {
+                position: absolute;
+            }
+            #s {
+                top: 0;
+                z-index: -1;
+            }
+            #c {
+                position: absolute;
+                top: 0;
+            }
+            #score {
+                bottom: 0;
+                left: 2px;
+            }
+            #max {
+                bottom: 0;
+                right: 2px;
+            }
+            #about {
+                top: 0;
+                left: 2px;
+            }
+            #pause, #play {
+                top: 1%;
+                right: 2px;
+            }
+            #play {
+                display: none;
+            }
+            .icon {
+                cursor: pointer;
+            }
+            #game-over-container, #game-over {
+                -webkit-transition: opacity 2s ease 0s;
+                transition: opacity 2s ease 0s;
+                opacity: 0;
+                visibility: hidden;
+            }
+            #game-over-container {
+                width: 100%;
+                height: 100%;
+                background-color: red;
+                top: 0;
+                left: 0;
+            }
+            #game-over {
+                color: #490000;
+                width: 100%;
+                text-align: center;
+                top: 35%;
+            }
+            #game-over > p {
+                margin: 0;
+                padding: 0;
+            }
+
+        </style>
+    </head>
+    <body onload="initScreen();">
+        <div id="container">
+            <canvas id="c">
+            </canvas>
+            <svg id="s">
+                <ellipse id="e" cx="0" cy="0" rx="0" ry="0" fill="#80AD2B" stroke="#886727" stroke-width="0" />
+            </svg>
+            <span id="score">0</span>
+            <span id="max"></span>
+            <span id="about" class="icon" onclick="showAbout();">¿?</span>
+            <svg id="play" class="icon" onclick="pause();"
+                 viewBox="-100 -100 1200 1200">
+              <path fill="#886727" d="M512 960c-282.77
+              0-512-229.23-512-512s229.23-512 512-512 512 229.23 512
+              512-229.23 512-512 512zM512 32c-229.75 0-416 186.25-416
+              416s186.25 416 416 416 416-186.25
+              416-416-186.25-416-416-416zM384 672l384-224-384-224z"></path>
+            </svg>
+            <svg id="pause" class="icon" onclick="pause();"
+                 viewBox="-100 -100 1200 1200">
+              <path fill="#886727" d="M512 960c-282.77
+              0-512-229.23-512-512s229.23-512 512-512 512 229.23 512
+              512-229.23 512-512 512zM512 32c-229.75 0-416 186.25-416
+              416s186.25 416 416 416 416-186.25
+              416-416-186.25-416-416-416zM320 640h128v-384h-128zM576
+              640h128v-384h-128z"></path>
+            </svg>
+        </div>
+        <div id="game-over-container">
+        </div>
+        <div id="game-over">
+            <p data-l10n-id="gameover1"></p>
+            <p data-l10n-id="gameover2"></p>
+            <svg id="restart" class="icon" viewBox="-100 -100 1200 1200">
+              <path fill="#490000" d="M874.022 810.020c-92.652 92.656-220.636
+              149.98-362.022 149.98-219.488
+              0-406.69-138.128-479.498-332.188l119.876-44.954c54.604 145.546
+              195.006 249.142 359.622 249.142 106.040 0
+              202.020-43
+              271.506-112.494l-143.506-143.506h384v384l-149.978-149.98zM512
+              64c-106.040 0-202.026 42.992-271.512 112.488l143.512
+              143.512h-384v-384l149.994 149.994c92.646-92.662 220.618-149.994
+              362.006-149.994 219.49 0 406.692 138.128 479.5 332.188l-119.876
+              44.954c-54.604-145.546-195.006-249.142-359.624-249.142z"></path>
+            </svg>
+        </div>
+    </body>
+</html>
