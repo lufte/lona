@@ -23,7 +23,7 @@ var DISTANCE = 0.5; //Distance between body parts, in radians.
 var RADIUS, LINEAR_WIDTH, CIRCULAR_WIDTH;
 
 //Display constants
-var SCREEN_WIDTH, SCREEN_HEIGHT, FOCI_X ,FOCUS_1_Y, FOCUS_2_Y, BORDER_WIDTH;
+var SCREEN_WIDTH, SCREEN_HEIGHT, FOCI_X, FOCUS_1_Y, FOCUS_2_Y, BORDER_WIDTH;
 var MAX_SCORE_KEY = 'hs';
 
 //Global snake variables
@@ -46,28 +46,34 @@ function initScreen() {
 
     //Get support for touch events
     if (!!('ontouchstart' in window)) {
-        document.body.addEventListener('touchstart', tap, {passive: false},
-                                       false);
+        document.body.addEventListener('touchstart', tap, {
+                passive: false
+            },
+            false);
     }
     // also enable click and keyboard on notebook with touchscreen
-    document.body.addEventListener('mousedown', tap, {passive: false},  false);
-    document.body.addEventListener('keydown', tap, {passive: false},  false);
+    document.body.addEventListener('mousedown', tap, {
+        passive: false
+    }, false);
+    document.body.addEventListener('keydown', tap, {
+        passive: false
+    }, false);
 
     /**
      * Provides requestAnimationFrame in a cross browser way.
      * @author paulirish / http://paulirish.com/
      * https://gist.github.com/mrdoob/838785
      */
-    if ( !window.requestAnimationFrame ) {
-        window.requestAnimationFrame = ( function() {
+    if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = (function () {
             return window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame ||
-            window.oRequestAnimationFrame ||
-            window.msRequestAnimationFrame ||
-            function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
-                window.setTimeout(callback, 1000/60);
-            };
-        } )();
+                window.mozRequestAnimationFrame ||
+                window.oRequestAnimationFrame ||
+                window.msRequestAnimationFrame ||
+                function ( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })();
     }
 
     //Get window size
@@ -100,10 +106,12 @@ function initScreen() {
     ellipse.setAttribute('stroke-width', BORDER_WIDTH * 2);
     fontSize = Math.round(SCREEN_WIDTH / 8) + 'px';
     document.body.style.fontSize = fontSize;
-    var icons = document.querySelectorAll('svg.icon');
-    for (var i = 0; i < icons.length; i++) {
-      icons[i].style.height = fontSize;
-    }
+    document.querySelectorAll('svg.icon').forEach(function (icon) {
+        icon.style.height = fontSize;
+    })
+    document.querySelectorAll('#play,#pause').forEach(function (icon) {
+        icon.style.height = Math.round(SCREEN_WIDTH / 6) + 'px';
+    })
     //Shrink SCREEN_WIDTH and SCREEN_HEIGHT to take the ellipse's border into account
     SCREEN_WIDTH -= BORDER_WIDTH * 4;
     SCREEN_HEIGHT -= BORDER_WIDTH * 4;
@@ -115,7 +123,7 @@ function initScreen() {
     FOCUS_2_Y = SCREEN_HEIGHT / 2 + Math.sqrt(Math.pow((SCREEN_HEIGHT - LINEAR_WIDTH) / 2, 2) - Math.pow((SCREEN_WIDTH - LINEAR_WIDTH) / 2, 2)) + BORDER_WIDTH * 2;
 
     isPaused = false;
-    if(typeof(Storage) !== "undefined") {
+    if (typeof (Storage) !== "undefined") {
         max.innerHTML = localStorage.getItem(MAX_SCORE_KEY);
         if (max.innerHTML == '') {
             max.innerHTML = '0';
@@ -198,11 +206,11 @@ function loop() {
 
 function tap(event) {
     if (
-            !isPaused &&
-            event.target.id != 'pause' &&
-            event.target.id != 'play' &&
-            event.target.id != 'about' &&
-            event.target.id != 'restart'
+        !isPaused &&
+        event.target.id != 'pause' &&
+        event.target.id != 'play' &&
+        event.target.id != 'about' &&
+        event.target.id != 'restart'
     ) {
         event.preventDefault();
         var last = centers[centers.length - 1];
@@ -219,7 +227,7 @@ function tap(event) {
 }
 
 function normalizeAngle(angle) {
-	return angle >= 0 ? angle % (Math.PI * 2) : angle % (Math.PI * 2) + (Math.PI * 2);
+    return angle >= 0 ? angle % (Math.PI * 2) : angle % (Math.PI * 2) + (Math.PI * 2);
 }
 
 function pause() {
