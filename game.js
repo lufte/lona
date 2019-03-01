@@ -104,6 +104,9 @@ function initScreen() {
     for (var i = 0; i < icons.length; i++) {
       icons[i].style.height = fontSize;
     }
+    document.querySelectorAll('#play , #pause').forEach(function(icon){
+        icon.style.height = Math.round(SCREEN_WIDTH / 6) + 'px';
+    })
     //Shrink SCREEN_WIDTH and SCREEN_HEIGHT to take the ellipse's border into account
     SCREEN_WIDTH -= BORDER_WIDTH * 4;
     SCREEN_HEIGHT -= BORDER_WIDTH * 4;
