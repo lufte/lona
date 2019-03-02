@@ -98,15 +98,11 @@ function initScreen() {
     ellipse.setAttribute('rx', SCREEN_WIDTH / 2 - BORDER_WIDTH);
     ellipse.setAttribute('ry', SCREEN_HEIGHT / 2 - BORDER_WIDTH);
     ellipse.setAttribute('stroke-width', BORDER_WIDTH * 2);
-    fontSize = Math.round(SCREEN_WIDTH / 8) + 'px';
-    document.body.style.fontSize = fontSize;
+    document.body.style.fontSize = Math.round(SCREEN_WIDTH / 7) + 'px';;
     var icons = document.querySelectorAll('svg.icon');
     for (var i = 0; i < icons.length; i++) {
-      icons[i].style.height = fontSize;
+      icons[i].style.height = Math.round(SCREEN_WIDTH / 6) + 'px';;
     }
-    document.querySelectorAll('#play , #pause').forEach(function(icon){
-        icon.style.height = Math.round(SCREEN_WIDTH / 6) + 'px';
-    })
     //Shrink SCREEN_WIDTH and SCREEN_HEIGHT to take the ellipse's border into account
     SCREEN_WIDTH -= BORDER_WIDTH * 4;
     SCREEN_HEIGHT -= BORDER_WIDTH * 4;
