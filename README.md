@@ -5,7 +5,7 @@ Lona
 
 A snake-like html5 game.
 
-http://lufte.github.io/lona
+https://lufte.github.io/lona
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get it on F-Droid"
