@@ -11,7 +11,7 @@
     <author email="javierayres@gmail.com" href="https://lufte.github.io/lona">
     </author>
     <content src="index.html" />
-    <access origin="*" />
+    <access origin="" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
